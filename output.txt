@@ -1,0 +1,90 @@
+==============================
+ PHÁT HIỆN GIAN LẬN – TOÀN BỘ PIPELINE    
+==============================
+
+Bước 1: Đang tải dữ liệu...
+Đang tải dữ liệu từ: d:\Bank_2\src\..\data
+
+
+                                         a\Base.csv
+✔ Dữ liệu đã được tải thành công
+
+Bước 2: Đang chạy Phân tích Dữ liệu Khám phá (EDA)...
+Đang chạy phân tích hành vi đơn lẻ...     
+d:\Bank_2\src\eda.py:61: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  fraud_rate = data.groupby(col)["fraud_bool"].mean()
+d:\Bank_2\src\eda.py:61: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  fraud_rate = data.groupby(col)["fraud_bool"].mean()
+d:\Bank_2\src\eda.py:61: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  fraud_rate = data.groupby(col)["fraud_bool"].mean()
+d:\Bank_2\src\eda.py:61: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  fraud_rate = data.groupby(col)["fraud_bool"].mean()
+d:\Bank_2\src\eda.py:61: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  fraud_rate = data.groupby(col)["fraud_bool"].mean()
+Đang chạy phân tích kết hợp hành vi...
+Đang chạy phân tích so sánh...
+Tất cả các tác vụ EDA đã hoàn thành. Kết quả được lưu tại eda_results
+✔ EDA hoàn tất
+
+Bước 3: Đang huấn luyện mô hình gian lận CatBoost...
+C:\Users\Lenovo\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\arraylike.py:399: RuntimeWarning: divide by zero encountered in log1p
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Lenovo\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\arraylike.py:399: RuntimeWarning: invalid value encountered in log1p
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+C:\Users\Lenovo\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\arraylike.py:399: RuntimeWarning: divide by zero encountered in log1p
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+Tỷ lệ gian lận: 1 : 89.7
+Đang huấn luyện mô hình...
+0:      learn: 0.7105293        total: 1.39s      remaining: 13m 53s
+100:    learn: 0.8110620        total: 1m 38s     remaining: 8m 7s
+200:    learn: 0.8216026        total: 3m 16s     remaining: 6m 29s
+300:    learn: 0.8332767        total: 4m 27s     remaining: 4m 25s
+400:    learn: 0.8456307        total: 5m 31s     remaining: 2m 44s
+500:    learn: 0.8568514        total: 6m 34s     remaining: 1m 17s
+599:    learn: 0.8678454        total: 7m 34s     remaining: 0us
+Huấn luyện mô hình hoàn tất.
+✔ Huấn luyện mô hình hoàn tất
+
+Bước 4: Đang đánh giá mô hình...
+
+=== MA TRẬN NHẦM LẪN ===
+[[167339  30455]
+ [   466   1740]]
+
+=== BÁO CÁO PHÂN LOẠI ===
+              precision    recall  f1-score   support
+
+           0     0.9972    0.8460    0.9154    197794
+           1     0.0540    0.7888    0.1012      2206
+
+    accuracy                         0.8454    200000
+   macro avg     0.5256    0.8174    0.5083    200000
+weighted avg     0.9868    0.8454    0.9064    200000
+
+ROC-AUC: 0.896764863589545
+
+==============================
+TÌM KIẾM NGƯỠNG (Lớp Gian Lận)
+==============================
+
+--- Ngưỡng = 0.3 ---
+Ma trận nhầm lẫn:
+[[139909  57885]
+ [   223   1983]]
+Độ chính xác (Precision): 0.0331 | Độ nhạy (Recall): 0.8989 | F1: 0.0639
+
+--- Ngưỡng = 0.4 ---
+Ma trận nhầm lẫn:
+[[155697  42097]
+ [   347   1859]]
+Độ chính xác (Precision): 0.0423 | Độ nhạy (Recall): 0.8427 | F1: 0.0805
+
+--- Ngưỡng = 0.5 ---
+Ma trận nhầm lẫn:
+[[167339  30455]
+ [   466   1740]]
+Độ chính xác (Precision): 0.0540 | Độ nhạy (Recall): 0.7888 | F1: 0.1012
+
+==============================
+ TẤT CẢ CÁC BƯỚC ĐÃ HOÀN THÀNH THÀNH CÔNG 
+==============================
